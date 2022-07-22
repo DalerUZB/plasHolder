@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import ContaniersUsers from './ContanersUsers/ContaniersUsers';
+import ContaniersUser from './ContainerUser/ContainerUser'
+import NotFound from './NotFound/NotFound';
+import { Routes, Route } from 'react-router-dom'
+import styled from 'styled-components';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      <Routes>
+        <Route path='*' element={<NotFound />} />
+        <Route path='/' element={<ContaniersUsers />} />
+        <Route path='/user/:slug' element={<ContaniersUser />} />
+      </Routes>
+    </Wrapper>
   );
 }
-
 export default App;
+const Wrapper = styled.div`
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+`
